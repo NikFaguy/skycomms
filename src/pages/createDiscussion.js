@@ -72,7 +72,7 @@ function CreateDiscussion() {
         formData.append('category', category);
 
         try {
-            const response = await fetch('http://localhost:5000/discussion/create', {
+            const response = await fetch('https://skycomms-api.onrender.com/discussion/create', {
                 method: 'POST',
                 body: formData,
                 headers: {
