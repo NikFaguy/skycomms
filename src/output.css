@@ -369,7 +369,7 @@ button:hover {
 
   select {
     font-family: var(--police);
-    width: 200px;
+    width: 220px;
     padding: 6px;
     border: 1px solid var(--gray);
     border-radius: 3px;
