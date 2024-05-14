@@ -13,25 +13,24 @@ const Login = () => {
   const handleUsernameChanged = (event) => {
     setUsername(event.target.value);
     setErrors({ ...errors, title: '' });
-};
+  };
 
-const handlePasswordChanged = (event) => {
+  const handlePasswordChanged = (event) => {
     setPassword(event.target.value);
     setErrors({ ...errors, text: '' });
-};
+  };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-            
     const newErrors = {};
 
     if (!username) {
-        newErrors.username = "Votre nom d'utilisateur est requis.";
+      newErrors.username = "Votre nom d'utilisateur est requis.";
     }
     if (!password) {
-        newErrors.password = "Votre mot de passe est requis.";
+      newErrors.password = "Votre mot de passe est requis.";
     }
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);

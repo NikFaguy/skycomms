@@ -13,47 +13,18 @@ export const useSignup = () => {
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    let errors = [];
-
-    if (!username) {
-      errors.push(
-        'Veuillez entrer un nom d\'utilisateur.'
-      );
-    }
-
     if (!emailPattern.test(email)) {
-      errors.push(
-        'Veuillez entrer une adresse courriel valide.'
-      );
-    }
-
-    if (!password) {
-      errors.push(
-        'Veuillez entrer un mot de passe.'
-      );
-    }
-    else if (password.length < 6) {
-      errors.push(
-        'Le mot de passe doit avoir au moins 6 caractères.'
-      );
+      setError('Veuillez entrer un courriel valide.');
     }
 
     if (password !== confirmPassword) {
-      errors.push(
-        'Les mots de passe ne correspondent pas.'
-      );
-    }
-
-    if (errors) {
-      setError(errors);
-      setIsLoading(false);
-      return;
+      setError('Les mots de passe ne correspondent pas.');
     }
 
     try {
       const user = { username, email, password }
 
-      const response = await fetch('https://skycomms-api.onrender.com/user/signup', {
+      const response = await fetch('http://localhost:5000/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
