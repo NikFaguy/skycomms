@@ -19,7 +19,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await fetch('https://skycomms-api/send_password_recovery', {
+      const response = await fetch('https://skycomms-api.onrender.comsend_password_recovery', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

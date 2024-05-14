@@ -83,7 +83,7 @@ const Profile = () => {
 			return;
 		}
 
-		const res = await fetch('https://skycomms-api/user/profile/username/' + user.user._id, {
+		const res = await fetch('https://skycomms-api.onrender.comuser/profile/username/' + user.user._id, {
 			method: 'PUT',
 			body: JSON.stringify(updateProfile),
 			headers: {
@@ -121,7 +121,7 @@ const Profile = () => {
 			return;
 		}
 
-		const res = await fetch('https://skycomms-api/user/profile/email/' + user.user._id, {
+		const res = await fetch('https://skycomms-api.onrender.comuser/profile/email/' + user.user._id, {
 			method: 'PUT',
 			body: JSON.stringify(updateProfile),
 			headers: {
@@ -163,7 +163,7 @@ const Profile = () => {
 			return;
 		}
 
-		const res = await fetch('https://skycomms-api/user/profile/' + user.user._id, {
+		const res = await fetch('https://skycomms-api.onrender.comuser/profile/' + user.user._id, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json'
@@ -190,7 +190,7 @@ const Profile = () => {
 
 		const fetchData = async () => {
 			try {
-				const response = await fetch('https://skycomms-api/discussion/discussions-recentes/' + user.user._id, {
+				const response = await fetch('https://skycomms-api.onrender.comdiscussion/discussions-recentes/' + user.user._id, {
 					headers: {
 						'Authorization': `Bearer ${user.token}`
 					}
@@ -222,7 +222,7 @@ const Profile = () => {
 
 	const getUsers = async (id) => {
 		try {
-			const response = await fetch(`https://skycomms-api/user/profile/${id}`);
+			const response = await fetch(`https://skycomms-api.onrender.comuser/profile/${id}`);
 			const userData = await response.json();
 			return userData;
 		} catch (error) {

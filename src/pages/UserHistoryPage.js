@@ -10,7 +10,7 @@ const UserHistoryPage = () =>{
 
     const handleDeleteUser = async (id)=>{
         try{
-        const response = await fetch(`https://skycomms-api/user/delete/${id}`, {
+        const response = await fetch(`https://skycomms-api.onrender.comuser/delete/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

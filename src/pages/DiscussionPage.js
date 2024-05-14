@@ -19,7 +19,7 @@ const DiscussionPage = () => {
     const davantageDeDiscussions = async () => {
 
         try {
-            const response = await fetch('https://skycomms-api/discussion/discussions-supplementaires/' + discussion.category + '/' + discussion._id,
+            const response = await fetch('https://skycomms-api.onrender.comdiscussion/discussions-supplementaires/' + discussion.category + '/' + discussion._id,
                 {
                     method: 'GET',
                     headers: {
@@ -53,7 +53,7 @@ const DiscussionPage = () => {
         //récupération de la discussion
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://skycomms-api/discussion/${id}`);
+                const response = await fetch(`https://skycomms-api.onrender.comdiscussion/${id}`);
 
                 if (response.ok) {
                     const discussionData = await response.json();
@@ -90,7 +90,7 @@ const DiscussionPage = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`https://skycomms-api/comment/comments/${id}`);
+            const response = await fetch(`https://skycomms-api.onrender.comcomment/comments/${id}`);
 
             if (response.ok) {
                 const commentsData = await response.json();
@@ -130,7 +130,7 @@ const DiscussionPage = () => {
         }
 
         try {
-            const response = await fetch(`https://skycomms-api/comment/create/${id}`, {
+            const response = await fetch(`https://skycomms-api.onrender.comcomment/create/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -159,7 +159,7 @@ const DiscussionPage = () => {
     const handleSaveEditedComment = async (commentId, newText) => {
 
         try {
-            const response = await fetch(`https://skycomms-api/comment/update/${commentId}`, {
+            const response = await fetch(`https://skycomms-api.onrender.comcomment/update/${commentId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ const DiscussionPage = () => {
     //suppression d'un commentaire
     const handleDeleteComment = async (commentId) => {
         try {
-            const response = await fetch(`https://skycomms-api/comment/delete/${commentId}`, {
+            const response = await fetch(`https://skycomms-api.onrender.comcomment/delete/${commentId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ const DiscussionPage = () => {
     //suppression de la discussion
     const handleDeleteDiscussion = async (discussionId) => {
         try {
-            const response = await fetch(`https://skycomms-api/discussion/delete/${discussionId}`, {
+            const response = await fetch(`https://skycomms-api.onrender.comdiscussion/delete/${discussionId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ const DiscussionPage = () => {
 
     const handleUpvote = (commentId) => async () => {
         try {
-            const response = await fetch(`https://skycomms-api/comment/upvote/${commentId}`, {
+            const response = await fetch(`https://skycomms-api.onrender.comcomment/upvote/${commentId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -249,7 +249,7 @@ const DiscussionPage = () => {
 
     const handleDownvote = (commentId) => async () => {
         try {
-            const response = await fetch(`https://skycomms-api/comment/downvote/${commentId}`, {
+            const response = await fetch(`https://skycomms-api.onrender.comcomment/downvote/${commentId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -277,7 +277,7 @@ const DiscussionPage = () => {
     //on récupère l'utilisateur des commentaires
     const getUsers = async (id) => {
         try {
-            const response = await fetch(`https://skycomms-api/user/profile/${id}`);
+            const response = await fetch(`https://skycomms-api.onrender.comuser/profile/${id}`);
             const userData = await response.json();
             return userData;
         } catch (error) {
