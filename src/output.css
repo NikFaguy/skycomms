@@ -437,7 +437,7 @@ button:hover {
   border: none;
   border-radius: 3px;
   font-size: 16px;
-  max-width: 80px;
+  max-width: 100px;
   padding: 0.5rem;
   text-align: center;
 }
