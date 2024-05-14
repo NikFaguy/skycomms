@@ -41,7 +41,7 @@ const Accueil = () => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('https://skycomms-api.onrender.comdiscussion/discussions');
+                const response = await fetch('https://skycomms-api.onrender.com/discussion/discussions');
                 const discussionsData = await response.json();
                 const discussionsWithUserData = await Promise.all(
                     discussionsData.map(async (discussion) => {
@@ -69,7 +69,7 @@ const Accueil = () => {
 
     const getUsers = async (id) => {
         try {
-            const response = await fetch(`https://skycomms-api.onrender.comuser/profile/${id}`);
+            const response = await fetch(`https://skycomms-api.onrender.com/user/profile/${id}`);
             const userData = await response.json();
             return userData;
         } catch (error) {

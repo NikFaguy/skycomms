@@ -53,7 +53,7 @@ export const useSignup = () => {
     try {
       const user = { username, email, password }
 
-      const response = await fetch('https://skycomms-api.onrender.comuser/signup', {
+      const response = await fetch('https://skycomms-api.onrender.com/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

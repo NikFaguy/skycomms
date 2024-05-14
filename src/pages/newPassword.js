@@ -24,7 +24,7 @@ const NewPassword =  () => {
         password: password
       };
 
-      const response = await fetch(`https://skycomms-api.onrender.comnewPassword`, {
+      const response = await fetch(`https://skycomms-api.onrender.com/newPassword`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

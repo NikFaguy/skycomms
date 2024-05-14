@@ -21,7 +21,7 @@ export const useLogin = () =>{
         try{
             const user = { username, password }
 
-            const response = await fetch('https://skycomms-api.onrender.comuser/login', {
+            const response = await fetch('https://skycomms-api.onrender.com/user/login', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

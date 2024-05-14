@@ -73,7 +73,7 @@ function CreateDiscussion() {
         formData.append('category', category);
 
         try {
-            const response = await axios.post('https://skycomms-api.onrender.comdiscussion/create', formData, {
+            const response = await axios.post('https://skycomms-api.onrender.com/discussion/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${user.token}`
