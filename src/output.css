@@ -757,3 +757,31 @@ input[type="file"] {
   width: auto;
 }
 /* #endregion COMMENTAIRES */
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+}
+
+/*#region page erreur*/
+.error-heading {
+  font-size: 48px;
+  color: var(--error); 
+}
+
+.error-message {
+  font-size: 18px;
+  color: var(--soft-black);
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .error-heading {
+    font-size: 36px;
+  }
+}
+/*#endregion page erreur*/

@@ -1,4 +1,4 @@
-import {BrowserRouter,Routes,Route,Navigate} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useUserContext } from './hooks/useUserContext';
 
 //pages and components
@@ -13,66 +13,72 @@ import CreateDiscussion from './pages/createDiscussion';
 import DiscussionPage from './pages/DiscussionPage';
 import UserHistoryPage from './pages/UserHistoryPage';
 import Search from './pages/Search';
+import ErrorPage from './pages/ErrorPage';
 
 
 function App() {
-  const {user} = useUserContext()
+  const { user } = useUserContext()
   return (
     <div className="App">
       <BrowserRouter>
-      
-      <Navbar/>
+
+        <Navbar />
 
         <div className='pages'>
 
           <Routes>
             <Route
-            path = "/"
-            element={<Accueil/>}
+              path="/"
+              element={<Accueil />}
             />
 
             <Route
-            path="/user/login"
-            //!user : ces pages ne sont pas accessibles si on est déjà connecté
-            element={!user ?<Login/>:<Navigate to="/"/>}
-            />
-            
-            <Route
-            path="/user/signup"
-            element={!user ?<Signup/>:<Navigate to="/"/>}
+              path="/user/login"
+              //!user : ces pages ne sont pas accessibles si on est déjà connecté
+              element={!user ? <Login /> : <Navigate to="/" />}
             />
 
-            <Route 
-            path="/user/resetPassword"
-            element={!user ?<ResetPassword/>:<Navigate to="/"/>}
+            <Route
+              path="/user/signup"
+              element={!user ? <Signup /> : <Navigate to="/" />}
+            />
+
+            <Route
+              path="/user/resetPassword"
+              element={!user ? <ResetPassword /> : <Navigate to="/" />}
             />
             <Route path='/resetPassword/:id/:token'
-            element={!user ?<NewPassword/>:<Navigate to="/"/>}
-            />
-            
-            <Route path='/discussion/search' element={<Search/>}/>
-
-            <Route
-            path="/discussion/create"
-            //user : ces pages sont accessibles seulement lorsque l'on est connecté
-            element={user ?<CreateDiscussion/>:<Navigate to="/"/>}
+              element={!user ? <NewPassword /> : <Navigate to="/" />}
             />
 
+            <Route path='/discussion/search' element={<Search />} />
+
             <Route
-            path="/discussion/:id"
-            element={<DiscussionPage/>}
+              path="/discussion/create"
+              //user : ces pages sont accessibles seulement lorsque l'on est connecté
+              element={user ? <CreateDiscussion /> : <Navigate to="/" />}
             />
 
             <Route
-            path="/user/profile"
-            element={user ?<Profile/>:<Navigate to="/"/>}
+              path="/discussion/:id"
+              element={<DiscussionPage />}
             />
 
             <Route
-            path="/user/user_history/:id"
-            element={user && user.user.isAdmin?<UserHistoryPage/>:<Navigate to="/"/>}
+              path="/user/profile"
+              element={user ? <Profile /> : <Navigate to="/" />}
             />
-            
+
+            <Route
+              path="/user/user_history/:id"
+              element={user && user.user.isAdmin ? <UserHistoryPage /> : <Navigate to="/" />}
+            />
+
+            <Route
+              path="*"
+              element={<ErrorPage errorType="404" />}
+            />
+
           </Routes>
 
         </div>
