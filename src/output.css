@@ -9,7 +9,7 @@
   --soft-black: #333;
   --gray: #b6b6b6;
   --error: red; /*#e7195a*/
-  --police: "Segoe UI";
+  --police: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --spacer: 1rem; /* 16px */
 }
 
