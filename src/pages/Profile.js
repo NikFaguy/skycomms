@@ -274,7 +274,7 @@ const Profile = () => {
 								<Link to={`/discussion/${discussion._id}`} className="discussion-bouton">
 									<button>Consulter</button>
 								</Link>
-								<h3 className='discussion-titre'>[{discussion.category}] {discussion.title}</h3>
+								<h3 className='discussion-titre'>{discussion.title}</h3>
 								<div><span>{discussion.category}</span></div>
 								<p className='discussion-description'>{(discussion.text).substr(0, 250) + "..."}</p>
 								<img src={`https://skycomms-api.onrender.com/${discussion.image}`} alt={discussion.title} className="discussion-image" />
