@@ -166,7 +166,7 @@ const Search = () => {
                             <h3 className='discussion-titre'>{discussion.title}</h3>
                             <div><span>{discussion.category}</span></div>
                             <p className='discussion-description'>{(discussion.text).substr(0, 250) + "..."}</p>
-                            <img src={require(`/images/${discussion.image}`)} alt={discussion.title} className="discussion-image" />
+                            <img src={`https://skycomms-api.onrender.com/${discussion.image}`} alt={discussion.title} className="discussion-image" />
                         </div>
                     ))}
             </div>

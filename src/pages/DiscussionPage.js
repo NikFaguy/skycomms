@@ -74,19 +74,19 @@ const DiscussionPage = () => {
 
     }, [id, navigate]);
 
-    useEffect(() => {
-        // importe une image dynamiquement
-        if (discussion && discussion.image) {
-            import(`/images/${discussion.image}`).then(image => {
-                setDiscussion(prevState => ({
-                    ...prevState,
-                    image: image.default
-                }));
-            }).catch(error => {
-                //console.error('Error:', error);
-            });
-        }
-    }, [discussion]);
+    // useEffect(() => {
+    //     // importe une image dynamiquement
+    //     if (discussion && discussion.image) {
+    //         import(`/images/${discussion.image}`).then(image => {
+    //             setDiscussion(prevState => ({
+    //                 ...prevState,
+    //                 image: image.default
+    //             }));
+    //         }).catch(error => {
+    //             //console.error('Error:', error);
+    //         });
+    //     }
+    // }, [discussion]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -331,7 +331,7 @@ const DiscussionPage = () => {
 
                     <h4>{discussion.category}</h4>
 
-                    <img src={discussion.image} alt={discussion.title} />
+                    <img src={`https://skycomms-api.onrender.com/${discussion.image}`} alt={discussion.title} />
 
                     <p>{discussion.text}</p>
                 </div>
@@ -458,7 +458,7 @@ const DiscussionPage = () => {
                                 <h3 className='discussion-titre'>{discussion.title}</h3>
                                 <div><span>{discussion.category}</span></div>
                                 <p className='discussion-description'>{(discussion.text).substr(0, 500) + "..."}</p>
-                                <img src={require(`/images/${discussion.image}`)} alt={discussion.title} className="discussion-image" />
+                                <img src={`https://skycomms-api.onrender.com/${discussion.image}`} alt={discussion.title} className="discussion-image" />
                             </div>
                         ))
                 ) : (
