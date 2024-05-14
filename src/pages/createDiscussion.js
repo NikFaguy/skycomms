@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useUserContext } from '../hooks/useUserContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -73,17 +72,19 @@ function CreateDiscussion() {
         formData.append('category', category);
 
         try {
-            const response = await axios.post('https://skycomms-api.onrender.com/discussion/create', formData, {
+            const response = await fetch('http://localhost:5000/discussion/create', {
+                method: 'POST',
+                body: formData,
                 headers: {
-                    'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${user.token}`
                 }
             });
 
-            if (response.status === 201) {
+            if (response.ok) {
                 navigate('/', { state: { message: 'Discussion ajoutée.' } });
             } else {
-                console.log('Error:', response.data.error);
+                const data = await response.json();
+                console.log('Error:', data.message);
             }
         } catch (error) {
             console.error('Error during discussion creation:', error);
