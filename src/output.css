@@ -621,7 +621,7 @@ input[type="file"] {
   gap: var(--spacer);
   margin-bottom: var(--spacer);
 
-  div {
+  .discussion-inner-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -636,7 +636,7 @@ input[type="file"] {
     margin: 0;
   }
 
-  h4 {
+  > h4 {
     margin: 0;
     background-color: var(--gray);
     border-radius: 50px;
@@ -660,7 +660,6 @@ input[type="file"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 210px;
 }
 
 .delete_button:hover {
@@ -669,7 +668,6 @@ input[type="file"] {
 
 @media screen and (max-width: 700px) {
   .discussion-content img {max-width: 95%;}
-  .delete_button {width: 190px;}
 }
 /* #endregion DISCUSSIONS */
 
