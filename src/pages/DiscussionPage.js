@@ -16,6 +16,14 @@ const DiscussionPage = () => {
 
     const [editingCommentId, setEditingCommentId] = useState(null);
 
+    const showModal = () => {
+        document.getElementById("modal").style.display = "block";
+    }
+
+    const closeModal = () => {
+        document.getElementById("modal").style.display = "none";
+    }
+
     const davantageDeDiscussions = async () => {
 
         try {
@@ -73,20 +81,6 @@ const DiscussionPage = () => {
         fetchData();
 
     }, [id, navigate]);
-
-    // useEffect(() => {
-    //     // importe une image dynamiquement
-    //     if (discussion && discussion.image) {
-    //         import(`/images/${discussion.image}`).then(image => {
-    //             setDiscussion(prevState => ({
-    //                 ...prevState,
-    //                 image: image.default
-    //             }));
-    //         }).catch(error => {
-    //             //console.error('Error:', error);
-    //         });
-    //     }
-    // }, [discussion]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -200,23 +194,26 @@ const DiscussionPage = () => {
     };
 
     //suppression de la discussion
-    const handleDeleteDiscussion = async (discussionId) => {
-        try {
-            const response = await fetch(`https://skycomms-api.onrender.com/discussion/delete/${discussionId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`
-                }
+    const handleDeleteDiscussion = async (e) => {
+        e.preventDefault();
 
-
-            });
-            if (response.ok) {
-                navigate('/', { state: { message: 'Utilisateur supprimé.' } });
+        const res = await fetch(`https://skycomms-api.onrender.com/discussion/delete/${discussion._id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
+        });
 
-        } catch (error) {
+        //Parse the response
+        const data = await res.json();
 
+        if (!res.ok) {
+            console.error('Erreur lors de la suppression de la discussion:', data.error);
+        }
+
+        if (res.ok) {
+            navigate('/', { state: { message: 'Discussion supprimé.' } });
         }
     }
 
@@ -319,10 +316,26 @@ const DiscussionPage = () => {
         <div className="discussion-page">
             {discussion ? (
                 <div className="discussion-content">
-                    <div>
+                    <div className='discussion-inner-content'>
                         <p><strong>{discussion.userData.username}</strong> il y a {heuresDepuisDate(discussion.createdAt)}</p>
                         {user && user.user.isAdmin && (
-                            <button className='delete_button' onClick={() => handleDeleteDiscussion(discussion._id)}>Supprimer discussion</button>
+                            <div>
+                                <button id='modal-button' className='delete_button' onClick={showModal}>Supprimer</button>
+                                <div id='modal' className='modal'>
+                                    <div className='modal-content'>
+                                        <div className='container-close'>
+                                            <span className="close" onClick={closeModal}>&times;</span>
+                                        </div>
+                                        <form onSubmit={handleDeleteDiscussion} noValidate>
+                                            <h4>Êtes-vous sûr de vouloir supprimer cette discussion ?</h4>
+                                            <p>Cette action est irréversible.</p>
+                                            <div>
+                                                <button type="submit" className='delete_button'>Supprimer</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         )}
 
                     </div>

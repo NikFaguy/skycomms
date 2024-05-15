@@ -15,16 +15,6 @@ const Profile = () => {
 	const { logout } = useLogout();
 	const [discussions, setDiscussions] = useState([]);
 
-	// Get the modal
-	const modal = document.getElementById("modal");
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onClick = function (event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-
 	const heuresDepuisDate = (dateDebut => {
 		// Convertir la date donnée en millisecondes
 		var debut = new Date(dateDebut).getTime();
@@ -60,12 +50,6 @@ const Profile = () => {
 
 	const closeModal = () => {
 		document.getElementById("modal").style.display = "none";
-	}
-
-	window.onClick = function (event) {
-		if (event.target !== modal) {
-			modal.style.display = "none";
-		}
 	}
 
 	const handleUsername = async (e) => {
@@ -149,9 +133,6 @@ const Profile = () => {
 
 	const handleSupprimerCompte = async (e) => {
 		e.preventDefault();
-
-		const mdp = { password }
-		console.log(mdp);
 
 		if (password === '') {
 			setErrorPassword('Veuillez entrer votre mot de passe.');
@@ -300,7 +281,7 @@ const Profile = () => {
 								<input type="password" id="password" onChange={(e) => setPassword(e.target.value)} required />
 							</div>
 							<div>
-								<button type="submit">Supprimer</button>
+								<button type="submit" className='delete_button'>Supprimer</button>
 							</div>
 						</form>
 						{errorPassword && <div className='error'>{errorPassword}</div>}
