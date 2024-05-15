@@ -10,11 +10,14 @@ const UserHistoryPage = () => {
     const [userData, setUserData] = useState([]);
 
     const showModal = () => {
-        document.getElementById("modal").style.display = "block";
+        document.getElementById("modal").style.opacity = "100%";
+        document.getElementById("modal").style.pointerEvents = "all";
+
     }
 
     const closeModal = () => {
-        document.getElementById("modal").style.display = "none";
+        document.getElementById("modal").style.opacity = "0%";
+        document.getElementById("modal").style.pointerEvents = "none";
     }
 
     const handleDeleteUser = async (e) => {

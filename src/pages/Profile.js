@@ -45,12 +45,15 @@ const Profile = () => {
 	});
 
 	const showModal = () => {
-		document.getElementById("modal").style.display = "block";
-	}
+        document.getElementById("modal").style.opacity = "100%";
+        document.getElementById("modal").style.pointerEvents = "all";
 
-	const closeModal = () => {
-		document.getElementById("modal").style.display = "none";
-	}
+    }
+
+    const closeModal = () => {
+        document.getElementById("modal").style.opacity = "0%";
+        document.getElementById("modal").style.pointerEvents = "none";
+    }
 
 	const handleUsername = async (e) => {
 		e.preventDefault();

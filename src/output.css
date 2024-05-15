@@ -526,7 +526,10 @@ input[type="file"] {
 }
 
 .modal {
-  display: none; /* Hidden by default */
+  transition: all 0.3s ease-in-out;
+  opacity: 0%;
+  pointer-events: none;
+  display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -539,6 +542,7 @@ input[type="file"] {
 }
 
 .modal-content {
+  transition: all 0.3s ease-in-out;
   max-width: 500px;
   background-color: var(--white);
   margin: 5% auto; /* 15% from the top and centered */
